@@ -1,4 +1,5 @@
 DesktopCritter 1.0
+==================
 
 This is my first Git project - so school me on what I need to do.
 
