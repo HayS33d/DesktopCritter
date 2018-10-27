@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DesktopCritter.Services;
+using System;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -8,6 +9,7 @@ namespace DesktopCritter.FormControllers
     {
         internal void Animate()
         {
+            windows = WindowService.RunningWindows.GetOpenedWindows();
             if (IsFalling == false)
                 IsFalling = !IsCritterOnWindow(windowCritterIsWalkingOn, this.CritterFrame);
 
@@ -56,7 +58,8 @@ namespace DesktopCritter.FormControllers
                     break;
             }
 
-            MoveCritter();
+            if(!HitAWall(this.CritterFrame, windows))
+                MoveCritter();
         }
 
         internal void FormCritter_Load(object sender, EventArgs e)

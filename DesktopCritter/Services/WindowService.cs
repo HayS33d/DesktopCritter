@@ -21,7 +21,7 @@ namespace DesktopCritter.Services
 
                 EnumWindows(new EnumWindowsProc(delegate (IntPtr hWnd, int lParam)
                 {
-                    if (hWnd == shellWindow) return true;
+                    //if (hWnd == shellWindow) return true;
                     if (!IsWindowVisible(hWnd)) return true;
                     
                     int length = GetWindowTextLength(hWnd);

@@ -31,6 +31,7 @@ namespace DesktopCritter.FormControllers
         public void Load()
         {
             Critter = new FormCritter();
+            Critter.TopMost = true;
             Critter.BackColor = Color.DimGray;
             Critter.TransparencyKey = Color.DimGray;
             Critter.PictureBox.MouseDown += FormCritter_MouseDown;
@@ -43,7 +44,7 @@ namespace DesktopCritter.FormControllers
             timer.Tick += Timer_Tick;
             timer.Enabled = true;
             timer.Start();
-            var windows = WindowService.RunningWindows.GetOpenedWindows();
+             windows = WindowService.RunningWindows.GetOpenedWindows();
         }
 
         internal WindowFrame CritterFrame

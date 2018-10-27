@@ -2,8 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DesktopCritter.FormControllers
 {
@@ -16,7 +14,6 @@ namespace DesktopCritter.FormControllers
            && openWindow.Top >= critter.Bottom
            && openWindow.Top - animatitonMovement < critter.Bottom
            && openWindow.Title != string.Empty);
-          
 
             if (fallingCritter == null)
                 return critter;
@@ -27,6 +24,24 @@ namespace DesktopCritter.FormControllers
             movementDistance = animatitonMovement;
             animationIndex = 0;
             return fallingCritter;
+        }
+
+        internal bool HitAWall(WindowFrame critter, List<WindowFrame> openWindows)
+        {
+            try
+            {
+                var walkingCritter = openWindows.FirstOrDefault(openWindow =>
+                openWindow.Left > critter.Right
+                && openWindow.Left < (critter.Right + movementDistance)
+                && openWindow.Top < critter.Bottom
+                && openWindow.Bottom > critter.Bottom);
+                return walkingCritter != null;
+            }
+            catch(Exception e)
+            {
+                return false;
+            }
+           
         }
     }
 }
